@@ -1,13 +1,38 @@
-import logo from './logo.svg';
+
 import './App.css';
+import React from 'react';
+import './App.css';
+// import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+// import { Switch } from 'react-router-dom';
+import { Switch } from 'react-router-dom';
+import { Router } from 'react-router-dom';
+import { Route } from 'react-router-dom';
+
+
+import ListEmployeeComponent from './components/ListEmployeeComponent';
+import HeaderComponent from './components/HeaderComponent';
+import FooterComponent from './components/FooterComponent';
+import CreateEmployeeComponent from './components/CreateEmployeeComponent';
+import ViewEmployeeComponent from './components/ViewEmployeeComponent';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-       <h1>Khushi</h1>
-      </header>
-    </div>
+    <div>
+    <Router>
+          <HeaderComponent />
+            <div className="container">
+                <Switch> 
+                      <Route path = "/" exact component = {ListEmployeeComponent}></Route>
+                      <Route path = "/employees" component = {ListEmployeeComponent}></Route>
+                      <Route path = "/add-employee/:id" component = {CreateEmployeeComponent}></Route>
+                      <Route path = "/view-employee/:id" component = {ViewEmployeeComponent}></Route>
+                      {/* <Route path = "/update-employee/:id" component = {UpdateEmployeeComponent}></Route> */}
+                </Switch>
+            </div>
+          <FooterComponent />
+    </Router>
+</div>
+
   );
 }
 
